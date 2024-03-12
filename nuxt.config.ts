@@ -3,6 +3,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: "src/",
+  app: {
+    head: {
+      title: 'PetCare',
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    }
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
