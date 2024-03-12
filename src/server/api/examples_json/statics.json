@@ -1,0 +1,37 @@
+{
+  "data": {
+    "activity": {
+      "daily": {
+        "percentage": 25
+      },
+      "weekly": {
+        "percentage": 30
+      },
+      "monthly": {
+        "percentage": 90
+      }
+    },
+    "sleep": {
+      "daily": {
+        "percentage": 75
+      },
+      "weekly": {
+        "percentage": 10
+      },
+      "monthly": {
+        "percentage": 45
+      }
+    },
+    "wellness": {
+      "daily": {
+        "percentage": 10
+      },
+      "weekly": {
+        "percentage": 55
+      },
+      "monthly": {
+        "percentage": 78
+      }
+    }
+  }
+}
