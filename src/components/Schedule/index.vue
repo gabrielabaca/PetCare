@@ -214,7 +214,7 @@ watch(defaultItem, () => {
   float: right !important;
 }
 .search {
-  background-image: url("icons/search.png");
+  background-image: url("icons/Search.png");
   background-size: 18px;
   background-position: 6px 6px;
   background-repeat: no-repeat;
