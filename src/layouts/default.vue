@@ -1,6 +1,6 @@
 <template>
   <div class="default-layout">
-    <div class="sidebar-content">
+    <div class="sidebar-content fixed">
       <SideBar />
     </div>
 
@@ -28,7 +28,7 @@ body {
   border-color: rgba(218, 227, 248, 1);
   border-style: solid;
   border-right-width: 1px;
-  display: inline-block;
+  display: fixed;
   max-width: 15vw;
   width: 20vw;
   height: 100vh;
@@ -39,6 +39,7 @@ body {
   position: absolute;
   width: 85vw;
   height: 100vh;
+  left: 15vw;
 }
 
 header {

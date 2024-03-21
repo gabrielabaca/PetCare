@@ -328,8 +328,8 @@ import { NuxtLink } from '#build/components';
               </svg>
               Appointments
               <span
-                class="bg-red-600 pt-[0.3rem] pl-[0.5rem] pb-[0.3rem] pr-[0.5rem] text-[0.75rem] ml-4 rounded-md text-white"
-                >2</span
+                class="bg-red-600 pt-[0.2rem] pl-[0.5rem] pb-[0.2rem] pr-[0.5rem] text-[0.75rem] float-end rounded-md text-white mt-[-0.2rem]"
+              >2</span
               >
             </li>
           </NuxtLink>
@@ -478,6 +478,7 @@ nav {
   margin-top: 3rem;
 }
 nav ul li {
+  cursor: pointer;
   font-size: 0.75rem;
   font-weight: 500;
   font-stretch: condensed;
@@ -485,6 +486,7 @@ nav ul li {
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 12px;
   margin-left: 0.4rem;
+  margin-top: 0.2rem;
 }
 nav ul li:hover,
 .router-link-active li {

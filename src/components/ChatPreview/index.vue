@@ -10,34 +10,39 @@
       <li
         v-for="(obj, key) in messages"
         :key="key"
-        class="grid grid-cols-12 pr-2 hover:cursor-pointer mb-4"
+        class="grid grid-cols-12 pr-2 hover:cursor-pointer mb-[1.2rem]"
       >
-        <div class="col-end-2">
+        <div class="relative col-end-2">
+          <div class="absolute top-[1px] right-[-2px]">
+            <div
+              v-if="obj.online"
+              class="w-2.5 h-2.5 rounded-full border-2 border-solid border-white bg-[#27A468]"
+            ></div>
+            <div
+              v-else
+              class="w-2.5 h-2.5 rounded-full border-2 border-solid border-white bg-[#E53761]"
+            ></div>
+          </div>
           <NuxtImg :src="`/img/chat/${obj.img}`" fit="contain" />
-          <div
-            v-if="obj.online"
-            class="absolute translate-x-[1.75rem] translate-y-[-2.15rem] w-2 h-2 rounded-full border border-white bg-green-700"
-          ></div>
-          <div
-            v-else
-            class="absolute translate-x-[1.75rem] translate-y-[-2.15rem] w-2 h-2 rounded-full border border-white bg-red-500"
-          ></div>
         </div>
+
         <div class="col-start-2 col-end-12 ml-2">
-          <h3 class="text-[0.7rem] font-[520]">{{ obj.name }}</h3>
-          <p class="text-[0.68rem] truncate text-[#0B1C33]">
+          <h3 class="text-[0.8rem] font-[520] mb-1">{{ obj.name }}</h3>
+          <p class="text-[0.8rem] truncate text-[#0B1C33] opacity-70">
             {{ obj.last_message }}
           </p>
         </div>
         <div class="col-start-12 ml-4 mt-[-0.1rem]">
-          <h3 class="text-[0.7rem] text-nowrap">
+          <h3 class="text-[0.8rem] text-nowrap opacity-70" >
             {{ getDateFormat(obj.due_at) }}
           </h3>
-          <span
-            v-if="obj.new_messages"
-            class="bg-red-600 pt-[0.2rem] pl-[0.3rem] pb-[0.2rem] pr-[0.3rem] text-[0.6rem] ml-4 rounded-md text-white"
-            >{{ obj.new_messages }}</span
+          <div 
+            v-if="obj.new_messages" 
+            class="flex justify-center align-middle float-end mt-1 bg-[#E53761] h-5 w-5 text-[0.7rem]" 
+            style="border-radius: 8px;"
           >
+            <span class="text-white mt-auto mb-auto">{{ obj.new_messages }}</span>
+          </div>
         </div>
       </li>
     </ul>

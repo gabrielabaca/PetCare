@@ -4,31 +4,33 @@
       <div
         class="select-options flex justify-between text-center items-center ml-2 mr-2 mb-4"
       >
-        <label class="text-[0.7rem]" for="select"
+        <label class="text-[0.8rem]" for="select"
           >{{ labelTitle?.toUpperCase() }}HEALTH MONITORING</label
         >
 
         <el-select
-          id="cars"
           v-model="defaultItem"
-          class="border rounded-md"
+          class="rounded-md capitalize shadow-none"
           name="select"
-          style="width: 5rem"
-          size="small"
+          style="width: 6rem;"
+          size="small" 
+          :suffix-icon="ArrowDownBold"
         >
           <el-option
             v-for="(obj, key) in optionsSelect"
             :key="key"
-            class="text-[0.7rem]"
+            class="text-[0.7rem] capitalize font-light"
             :value="obj.name"
           >
-            {{ obj.name }}
+          <template #default="scope">
+            <div class="font-light text-[0.8rem]">{{ obj.name }}</div>
+          </template>
           </el-option>
         </el-select>
       </div>
 
       <div
-        class="bottons grid grid-cols-4 border rounded-lg p-2 ml-2 mr-2 mb-4"
+        class="bottons grid grid-cols-4 border rounded-lg p-2 ml-2 mr-2 mb-4 gap-8"
       >
         <el-button
           text
@@ -38,6 +40,7 @@
           <el-icon class="el-icon--left">
             <svg
               viewBox="0 0 24 24"
+              style="height: 50px !important;"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -123,8 +126,8 @@
         >
           <el-icon class="el-icon--left">
             <svg
-              width="15"
-              height="19"
+              width="17"
+              height="21"
               viewBox="0 0 15 19"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -155,6 +158,8 @@
 import { reactive } from "vue";
 import { Line } from "vue-chartjs";
 import { useMonitoringStore } from "~/store/monitoring";
+import { ArrowDownBold } from "@element-plus/icons-vue";
+
 const store = useMonitoringStore();
 
 await store.fetch();
@@ -194,15 +199,28 @@ const optionsSelect = [
   },
 ];
 
+const getGradient = (context:any) =>{
+  const chart = context.chart;
+  const { ctx, chartArea } = chart;
+  if (!chartArea) {
+    return null;
+  }
+  const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+  gradient.addColorStop(0, 'rgba(55, 136, 229, 0)'); 
+  gradient.addColorStop(1, 'rgba(55, 136, 229, 0.24)'); 
+  return gradient;
+};
+
 const chartData = ref({
   labels: Object.keys(
     getStore[monitoringSelect.value].value(defaultItem.value),
   ),
   datasets: [
     {
-      label: "Datos de ejemplo",
+      label: "HEALTH MONITORING",
       borderColor: "#3788E5",
-      backgroundColor: ["#3788E53D", "#3788E500"],
+      borderWidth: 1,
+      backgroundColor: getGradient,
       fill: "start",
       pointRadius: 0,
       data: Object.values(
@@ -224,17 +242,26 @@ const chartOptions = reactive({
   scales: {
     x: {
       grid: {
-        color: "transparent",
+        display:false,
+        drawBorder: false,
       },
     },
     y: {
+      display: true,
       grid: {
         color: "#DAE3F8",
+        lineWidth: 1,
       },
       border: {
-        dash: [8, 4],
+        dash: [8],
+        color: 'transparent'
       },
-    },
+      ticks: {
+        padding:10,
+        backdropColor:'transparent'
+      }
+    }
+
   },
 });
 
@@ -250,9 +277,10 @@ const reloadChart = () => {
     ),
     datasets: [
       {
-        label: "Datos de ejemplo",
+        label: "HEALTH MONITORING",
         borderColor: "#3788E5",
-        backgroundColor: ["#3788E53D", "#3788E500"],
+        borderWidth: 1,
+        backgroundColor: getGradient,
         fill: "start",
         pointRadius: 0,
         data: Object.values(
@@ -262,6 +290,8 @@ const reloadChart = () => {
     ],
   };
 };
+
+
 watch(defaultItem, () => {
   reloadChart();
 });
@@ -274,11 +304,20 @@ watch(monitoringSelect, () => {
 .bottons .el-button svg {
   stroke: black;
 }
+.bottons .el-button svg{
+  min-height: 1.2rem !important;
+  min-width: 1.2rem !important;
+  margin-right: 10px
+}
 .bottons .el-button:hover svg {
   stroke: white;
 }
 .bottons .el-button {
-  font-size: 0.75rem !important;
+  font-size: 0,7rem!important;
+  font-weight: 500;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-radius: 0.7rem
 }
 .bottons .el-button:hover {
   color: white;

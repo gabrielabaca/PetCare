@@ -1,5 +1,5 @@
 <template>
-  <form action="#" method="get" class="col-start-1 col-span-3 search">
+  <form action="#" method="get" class="col-start-1 col-span-3 search pr-1 pl-2">
     <input
       type="text"
       class="border rounded-lg"
@@ -59,7 +59,7 @@
       </svg>
     </button>
     <button
-      class="bg-[#3788E5] pl-3 pr-3 pt-1 pb-1 rounded-lg text-white text-sm mt-[-5px]"
+      class="bg-[#3788E5] pl-3 pr-3 pt-1 pb-1 rounded-lg text-white text-[0.8rem] font-light mt-[-5px]"
     >
       Add widget
     </button>
@@ -73,7 +73,7 @@
 .search input {
   position: relative;
   line-height: 20px;
-  font-size: 14px;
+  font-size: 0.8rem;
   background-image: url("icons/search.png");
   background-size: 18px;
   background-position: 10px 10px;
@@ -85,7 +85,7 @@
   color: rgba(11, 28, 51, 1);
 }
 .head-buttons svg {
-  max-width: 30px;
-  max-height: 30px;
+  max-width: 24px;
+  max-height: 24px;
 }
 </style>

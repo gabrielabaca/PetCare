@@ -1,30 +1,33 @@
 <template>
-  <div class="rounded-lg p-4 pt-6 border bg-white">
-    <div class="grid grid-cols-2 ml-2 mr-2 mb-4">
-      <label class="text-[0.7rem]" for="select">VACCINATION SCHEDULE</label>
+  <div class="rounded-lg p-4 pt-6 pb-6 border bg-white">
+    <div class="select-options grid grid-cols-2 ml-2 mr-2 mb-4">
+      <label class="text-[0.8rem]" for="select">VACCINATION SCHEDULE</label>
 
-      <div class="col-start-2 row-span-1">
+      <div class="col-start-2 row-span-1 ">
         <el-select
-          id="cars"
           v-model="defaultItem"
-          class="border rounded-md float-end"
+          class="rounded-md shadow-none float-end"
           name="select"
-          style="width: 5rem"
-          size="small"
+          style="width: 6rem;"
+          size="small" 
+          :suffix-icon="ArrowDownBold"
         >
           <el-option
             v-for="(obj, key) in optionsSelect"
             :key="key"
-            class="text-[0.7rem]"
+            class="text-[0.7rem] font-light"
             :value="obj.prop_name"
             :label="obj.name"
           >
-            {{ obj.name }}
+          <template #default="scope">
+            <div class="font-light text-[0.8rem]">{{ obj.name }}</div>
+          </template>
           </el-option>
         </el-select>
-        <el-button class="search float-end" text circle />
+        <el-button class="search float-end mr-4 mt-[0.1rem]" text circle />
       </div>
     </div>
+    <div class="pl-2 pr-2">
     <el-table
       :data="tableData"
       class="veterinar-table"
@@ -32,21 +35,23 @@
       ref="scheduleTable"
       :header-cell-style="{
         backgroundColor: '#F2F5FA',
+        borderColor: '#DAE3F8',
         color: '#0B1C33',
         fontWeight: '500',
         fontSize: '0.75rem',
-        paddingTop: '15px',
-        paddingBottom: '15px',
+        paddingTop: '1.1rem',
+        paddingBottom: '1.1rem',
       }"
       :cell-style="{
         color: '#0B1C33',
         fontWeight: '500',
         fontSize: '0.75rem',
-        paddingTop: '15px',
-        paddingBottom: '15px',
+        paddingTop: '1.1rem',
+        paddingBottom: '1.1rem',
+        maxWidth: '60px'
       }"
     >
-      <el-table-column label="Name" prop="name" width="70" >
+      <el-table-column fixed label="Name" prop="name" width="90">
         <template #default="scope">
           <div style="display: flex; align-items: center">
             <span>{{ scope.row.name }}</span>
@@ -54,16 +59,19 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="Type" prop="_type" width="105" >
+      <el-table-column fixed label="Type" prop="_type" width="80">
+        <template #header="scope" class="header-align">
+          <div style="margin-left: 0.5rem;">Type</div>
+        </template>
         <template #default="scope">
-          <div style="display: flex; align-items: center">
+          <div style="display: flex;">
             <el-button
-              :type="scope.row._type.color"
+              :color="scope.row._type.color"
               :style="{
-                width: '100%',
+                minWidth: '50px',
                 marginLeft: '10px',
                 fontWeight: '500',
-                fontSize: '0.75rem',
+                fontSize: '0.7rem',
               }"
               size="small"
               plain
@@ -74,15 +82,21 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="Date" prop="date" width="120" > 
+      <el-table-column label="Date" prop="date"> 
+        <template #header="scope">
+          <div class="ml-[2.4rem]">Date</div>
+        </template>
         <template #default="scope">
-          <div style="display: flex; align-items: center; text-wrap: nowrap">
+          <div class="ml-10" style="display: flex; align-items: center; text-wrap: nowrap">
             <span>{{ scope.row.date }}</span>
           </div>
         </template>
       </el-table-column>
 
-      <el-table-column label="Veterinar" prop="veterinar" header-align="right" >
+      <el-table-column class="pl-6 pr-6" label="Veterinar" prop="veterinar" header-align="right">
+        <template #header="scope" class="header-align">
+          <div style="margin-right: 0.1rem;">Veterinar</div>
+        </template>
         <template #default="scope">
           <div style="display: flex; align-items: right; text-wrap: nowrap">
             <el-button
@@ -91,19 +105,21 @@
                 width: '100%',
                 marginLeft: '10px',
                 fontWeight: '500',
-                fontSize: '0.75rem',
+                fontSize: '0.8rem',
+                borderRadius: '8px'
               }"
             >
               {{ scope.row.veterinar }}
             </el-button>
             <el-button
               v-else
-              type="primary"
+              color="#3788E5"
               :style="{
                 width: '100%',
                 marginLeft: '10px',
                 fontWeight: '500',
-                fontSize: '0.75rem',
+                fontSize: '0.8rem',
+                borderRadius: '8px'
               }"
             >
               Find veterinar
@@ -113,9 +129,11 @@
       </el-table-column>
     </el-table>
   </div>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { ArrowDownBold } from '@element-plus/icons-vue';
 
 const props = defineProps({
   labelTitle: String,
@@ -129,6 +147,20 @@ interface User {
   _type: object;
   veterinar: String | null;
 }
+interface ColorCodes {
+  success: {
+    type:String,
+    default:'#27A468'
+  },
+  error: {
+    type:String,
+    default:'#D03258'
+  },
+  warning: {
+    type:String,
+    default: '#F2A735'
+  }
+}
 const sortOrder = ref({ prop: 'name', order: 'ascending' })
 const scheduleTable = ref(null)
 
@@ -138,7 +170,7 @@ const tableData: User[] = [
     name: "Rabies",
     _type: {
       text: "Overdue",
-      color: "danger",
+      color: "#D03258",
     },
     date: "01 Dec 2023",
     veterinar: null,
@@ -147,7 +179,7 @@ const tableData: User[] = [
     name: "Bordetella",
     _type: {
       text: "Noncore",
-      color: "warning",
+      color: "#F2A735",
     },
     date: "11 Dec 2024",
     veterinar: "James Grey",
@@ -156,7 +188,7 @@ const tableData: User[] = [
     name: "Distemper",
     _type: {
       text: "Core",
-      color: "success",
+      color: "#27A468",
     },
     date: "27 Jun 2024",
     veterinar: "Jim Brown",
@@ -165,7 +197,7 @@ const tableData: User[] = [
     name: "Calicivirus",
     _type: {
       text: "Core",
-      color: "success",
+      color: "#27A468",
     },
     date: "16 Sep 2024",
     veterinar: "Helen Brooks",
@@ -174,22 +206,26 @@ const tableData: User[] = [
 
 const optionsSelect = [
   {
-    name: "By Name",
+    name: "By name",
     prop_name: "name"
   },
   {
-    name: "By Type",
+    name: "By type",
     prop_name: "_type"
   },
   {
-    name: "By Date",
+    name: "By date",
     prop_name: "date"
   },
   {
-    name: "By Veterinar",
+    name: "By veterinar",
     prop_name: "veterinar"
   },
 ];
+
+const getDefaultColors = (color:string = 'success') => {
+
+};
 
 watch(defaultItem, () => {
   const table = scheduleTable.value;
@@ -219,5 +255,9 @@ watch(defaultItem, () => {
   background-position: 6px 6px;
   background-repeat: no-repeat;
   right: 10px !important;
+}
+
+.header-align div{
+  padding-left:1500px !important
 }
 </style>

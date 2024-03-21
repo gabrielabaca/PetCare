@@ -17,18 +17,11 @@
         "Week 4": 45
       },
       "monthly": {
-        "January": 15,
-        "February": 22,
-        "March": 16,
-        "April": 12,
-        "May": 19,
-        "June": 12,
-        "July": 35,
-        "August": 30,
         "September": 28,
         "October": 13,
         "November": 14,
-        "December": 22
+        "December": 22,
+        "January": 15
       }
     },
     "pulse": {
@@ -48,18 +41,11 @@
         "Week 4": 520
       },
       "monthly": {
-        "January": 2000,
-        "February": 2100,
-        "March": 2200,
-        "April": 2300,
-        "May": 2400,
-        "June": 2300,
-        "July": 2400,
-        "August": 2500,
         "September": 2600,
         "October": 2500,
         "November": 2400,
-        "December": 2300
+        "December": 2300,
+        "January": 2000
       }
     },
     "temperature": {
@@ -79,18 +65,11 @@
         "Week 4": 709.5
       },
       "monthly": {
-        "January": 2995.3,
-        "February": 3001.2,
-        "March": 3007.1,
-        "April": 3013.0,
-        "May": 3018.9,
-        "June": 3024.8,
-        "July": 3030.7,
-        "August": 3036.6,
         "September": 3042.5,
         "October": 3048.4,
         "November": 3054.3,
-        "December": 3060.2
+        "December": 3060.2,
+        "January": 2995.3
       }
     },
     "calories_burned": {
@@ -110,18 +89,11 @@
         "Week 4": 4300
       },
       "monthly": {
-        "January": 18000,
-        "February": 18500,
-        "March": 19000,
-        "April": 19500,
-        "May": 20000,
-        "June": 19500,
-        "July": 20000,
-        "August": 20500,
         "September": 21000,
         "October": 20500,
         "November": 20000,
-        "December": 19500
+        "December": 19500,
+        "January": 18000
       }
     }
   }

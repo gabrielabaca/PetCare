@@ -31,4 +31,9 @@ export default defineNuxtConfig({
     },
     globalAppMiddleware: true,
   },
+  googleFonts: {
+    families: {
+      'Rethink Sans': true
+    }
+  }
 });
