@@ -1,9 +1,9 @@
 <template>
-  <div class="rounded-lg p-4 pt-6 pb-6 border bg-white">
+  <div class="rounded-[0.8rem] p-4 pt-6 pb-6 border bg-white">
     <div class="select-options grid grid-cols-2 ml-2 mr-2 mb-4">
       <label class="text-[0.8rem]" for="select">VACCINATION SCHEDULE</label>
 
-      <div class="col-start-2 row-span-1 ">
+      <div class="col-start-2 row-span-1 mt-[-5px]">
         <el-select
           v-model="defaultItem"
           class="rounded-md shadow-none float-end"
@@ -40,7 +40,7 @@
         fontWeight: '500',
         fontSize: '0.75rem',
         paddingTop: '1.1rem',
-        paddingBottom: '1.1rem',
+        paddingBottom: '1.1rem'
       }"
       :cell-style="{
         color: '#0B1C33',
@@ -52,15 +52,18 @@
       }"
     >
       <el-table-column fixed label="Name" prop="name" width="90">
+        <template #header="scope">
+          <div style="margin-left: 0.8rem;">Name</div>
+        </template>
         <template #default="scope">
           <div style="display: flex; align-items: center">
-            <span>{{ scope.row.name }}</span>
+            <span style="margin-left: 0.8rem;">{{ scope.row.name }}</span>
           </div>
         </template>
       </el-table-column>
 
-      <el-table-column fixed label="Type" prop="_type" width="80">
-        <template #header="scope" class="header-align">
+      <el-table-column fixed label="Type" prop="_type" width="100">
+        <template #header="scope">
           <div style="margin-left: 0.5rem;">Type</div>
         </template>
         <template #default="scope">
@@ -72,6 +75,10 @@
                 marginLeft: '10px',
                 fontWeight: '500',
                 fontSize: '0.7rem',
+                borderRadius: '8px',
+                padding: '8px',
+                paddingTop: '13px',
+                paddingBottom: '13px'
               }"
               size="small"
               plain
@@ -94,11 +101,11 @@
       </el-table-column>
 
       <el-table-column class="pl-6 pr-6" label="Veterinar" prop="veterinar" header-align="right">
-        <template #header="scope" class="header-align">
-          <div style="margin-right: 0.1rem;">Veterinar</div>
+        <template #header="scope">
+          <div style="margin-right: 0.8rem;">Veterinar</div>
         </template>
         <template #default="scope">
-          <div style="display: flex; align-items: right; text-wrap: nowrap">
+          <div style="display: flex; align-items: right; text-wrap: nowrap; margin-right: 0.8rem; ">
             <el-button
               v-if="scope.row.veterinar"
               :style="{
@@ -223,9 +230,6 @@ const optionsSelect = [
   },
 ];
 
-const getDefaultColors = (color:string = 'success') => {
-
-};
 
 watch(defaultItem, () => {
   const table = scheduleTable.value;
@@ -237,12 +241,14 @@ watch(defaultItem, () => {
 <style scoped>
 .veterinar-table {
   width: 100%;
-  border-radius: 5px;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
   border-left-style: solid;
   border-right-style: solid;
   border-right-color: rgb(229, 231, 235);
   border-width: 1px;
   border-color: #dae3f8;
+  padding-left: 0;
 }
 
 .veterinar-table table thead th:last_child {
@@ -257,7 +263,4 @@ watch(defaultItem, () => {
   right: 10px !important;
 }
 
-.header-align div{
-  padding-left:1500px !important
-}
 </style>

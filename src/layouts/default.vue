@@ -4,11 +4,11 @@
       <SideBar />
     </div>
 
-    <div class="main-content">
-      <header class="grid gap-4 grid-cols-5">
+    <div class="main-content overflow-x-hidden">
+      <header class="grid gap-5 grid-cols-5">
         <HeadMenu />
       </header>
-      <main class="grid grid-cols-5 gap-4">
+      <main class="grid grid-cols-5 gap-5">
         <slot />
       </main>
     </div>
@@ -29,17 +29,17 @@ body {
   border-style: solid;
   border-right-width: 1px;
   display: fixed;
-  max-width: 15vw;
-  width: 20vw;
+  max-width: 19vw;
+  width: 100%;
   height: 100vh;
 }
 
 .main-content {
   display: inline-block;
   position: absolute;
-  width: 85vw;
+  width: 81vw;
   height: 100vh;
-  left: 15vw;
+  left: 19vw;
 }
 
 header {

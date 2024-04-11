@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-3 gap-4">
+  <div class="grid grid-cols-3 gap-5">
     <ClientOnly>
       <DoughnutBase
         data-store="activity"

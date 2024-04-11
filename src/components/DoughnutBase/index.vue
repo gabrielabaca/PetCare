@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-lg p-4 pt-6 border bg-white" style="max-height: 100%">
+  <div class="rounded-[0.8rem] p-4 pt-5 border bg-white" style="max-height: 100%">
     <div class="select-options flex justify-between text-center items-center">
       <label class="text-[0.8rem]" for="select">{{
         labelTitle?.toUpperCase()
@@ -30,11 +30,11 @@
       :data="chartData"
       :options="chartOptions"
       class="mt-6"
-      style="max-height: 11rem"
+      style="max-height: 12rem"
       
     />
     <div
-      class="text-center font-bold lg:text-[2.2rem] lg:mt-[-7.3rem] lg:mb-[4rem] md:text-[1.9em] md:mt-[-5rem] md:mb-[0rem]"
+      class="text-center font-bold lg:text-[2.4rem] lg:mt-[-7.9rem] lg:mb-[4rem] md:text-[1.9em] md:mt-[-5rem] md:mb-[0rem]"
     >
       <h1>
         {{

@@ -9,7 +9,7 @@
   </form>
 
   <div
-    class="col-start-5 head-buttons flex justify-end items-center text-center space-x-3 float-end"
+    class="col-start-5 head-buttons flex justify-end items-center text-center space-x-3 float-end p-2"
   >
     <button>
       <svg fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +59,7 @@
       </svg>
     </button>
     <button
-      class="bg-[#3788E5] pl-3 pr-3 pt-1 pb-1 rounded-lg text-white text-[0.8rem] font-light mt-[-5px]"
+      class="bg-[#3788E5] pl-3 pr-3 pt-[0.4rem] pb-[0.4rem] rounded-lg text-white text-[0.8rem] font-light mt-[-5px]"
     >
       Add widget
     </button>

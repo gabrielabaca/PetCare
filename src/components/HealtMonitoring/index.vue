@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-lg p-4 pt-6 border mt-4 bg-white">
+  <div class="rounded-[0.8rem] block p-3 pt-5 border mt-4 bg-white min-h-[60%]">
     <ClientOnly>
       <div
         class="select-options flex justify-between text-center items-center ml-2 mr-2 mb-4"
@@ -30,7 +30,7 @@
       </div>
 
       <div
-        class="bottons grid grid-cols-4 border rounded-lg p-2 ml-2 mr-2 mb-4 gap-8"
+        class="bottons grid grid-cols-4 border rounded-lg p-2 ml-2 mr-2 mb-4 gap-2"
       >
         <el-button
           text
@@ -126,8 +126,8 @@
         >
           <el-icon class="el-icon--left">
             <svg
-              width="17"
-              height="21"
+              width="16"
+              height="15"
               viewBox="0 0 15 19"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@
 
       <Line
         class="mt-2 row-span-2"
-        height="120rem"
+        height="120%"
         :data="chartData"
         :options="chartOptions"
       />
@@ -236,9 +236,6 @@ const chartOptions = reactive({
   interaction: {
     intersect: false,
   },
-  style: {
-    height: 40,
-  },
   scales: {
     x: {
       grid: {
@@ -257,8 +254,9 @@ const chartOptions = reactive({
         color: 'transparent'
       },
       ticks: {
-        padding:10,
-        backdropColor:'transparent'
+        padding: 20,
+        backdropColor:'transparent',
+        crossAlign: 'center'
       }
     }
 
@@ -305,8 +303,8 @@ watch(monitoringSelect, () => {
   stroke: black;
 }
 .bottons .el-button svg{
-  min-height: 1.2rem !important;
-  min-width: 1.2rem !important;
+  min-height: 1rem !important;
+  min-width: 1rem !important;
   margin-right: 10px
 }
 .bottons .el-button:hover svg {
